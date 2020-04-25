@@ -7,10 +7,14 @@ class EmployeeWageComputation {
         final int isfullTime = 2;
         final int empWagePerHr = 20;
         final int workingDays = 20;
-        int salary = 0;
+        final int maxHrsInMonth = 50;
+
+        int totalEmpHrs = 0;
+        int totalWorkingDays = 0;
         int empHrs = 0;
-        int monthlySalary = 0;
-        for (int i = 1; i <= workingDays; i++) {
+
+        while (totalEmpHrs < maxHrsInMonth && totalWorkingDays < workingDays) {
+            totalWorkingDays++;
             int randomValue = (int) (Math.random() * 3 + 1);
             switch (randomValue) {
                 case 1:
@@ -22,8 +26,9 @@ class EmployeeWageComputation {
                 case 3:
                     empHrs = 0;
             }
-            salary = empWagePerHr * empHrs;
-            System.out.println(salary);
+            totalEmpHrs += empHrs;
         }
+        int monthlySalary = empWagePerHr * totalEmpHrs;
+        System.out.println(monthlySalary);
     }
 }
