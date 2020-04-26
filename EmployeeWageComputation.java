@@ -1,27 +1,22 @@
 package com.emp;
 
 class EmployeeWageComputation {
-   public static final int ispartTime = 1;
-   public static final int isfullTime = 2;
-   public static final int empWagePerHr = 20;
-   public static final int workingDays = 20;
-   public static final int maxHrsInMonth = 50;
-   public static int empHrs=0;
-   public static void calculateEmployeeWage()
+    public static int empHrs=0;
+   public static void calculateEmployeeWageForCompany(String company,int empRate,int numofDays,int maxHrs)
    {
        int totalEmpHrs = 0;
        int totalWorkingDays = 0;
        int totalWage=0;
-       while (totalEmpHrs < maxHrsInMonth && totalWorkingDays < workingDays) {
+       while (totalEmpHrs < maxHrs && totalWorkingDays < numofDays) {
            totalWorkingDays++;
            int randomValue = (int) (Math.random() * 3 + 1);
            empHrs=getWorkingHours(randomValue);
-           totalEmpHrs += empHrs;
-           int monthlySalary = empWagePerHr * totalEmpHrs;
+           //totalEmpHrs += empHrs;
+           int monthlySalary = empRate * empHrs;
            totalWage+=monthlySalary;
            System.out.println(monthlySalary);
        }
-       System.out.println("Total wage is"+totalWage);
+       System.out.println("Total Employee wage For Company"+" "+company+" "+totalWage);
    }
    public static int getWorkingHours(int randomValue)
    {
@@ -39,7 +34,8 @@ class EmployeeWageComputation {
    }
    public static void main(String args[]){
         System.out.println("Welcome to Employee Wage Computation");
-        calculateEmployeeWage();
+        calculateEmployeeWageForCompany("Wipro",20,2,10);
+       calculateEmployeeWageForCompany("Infosys",10,4,2);
         }
 }
 
