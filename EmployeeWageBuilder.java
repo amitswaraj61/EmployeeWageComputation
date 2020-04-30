@@ -1,18 +1,36 @@
 package com.emp;
 
+import jdk.nashorn.internal.ir.CallNode;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
+
 class EmployeeWageBuilder {
+
+    public static ArrayList<CompanyEmpWage> al = new ArrayList<CompanyEmpWage>();
+
+    public static void getTotalWageForCompany(String companyname) {
+
+        for (CompanyEmpWage var:al)
+        {
+
+            if (var.calculateEmployeeWageForCompany().contains(companyname)) {
+                System.out.println(var.calculateEmployeeWageForCompany());
+                break;
+            }
+        }
+
+    }
     public static void main(String args[]) {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Employee Wage Computation");
-        ArrayList<CompanyEmpWage> al=new ArrayList<CompanyEmpWage>();
+        Scanner scanner = new Scanner(System.in);
+
         System.out.println("please enter the number of company");
-        int number=scanner.nextInt();
+        int number = scanner.nextInt();
         scanner.nextLine();
-        for (int index =0; index < number; index++) {
+        for (int index = 0; index < number; index++) {
             System.out.println("Please enter the" + index + "st company deatils");
             System.out.println("enter the company name");
             String companyName = scanner.nextLine();
@@ -24,11 +42,11 @@ class EmployeeWageBuilder {
             int maxHrs = scanner.nextInt();
             scanner.nextLine();
             al.add(new CompanyEmpWage(companyName, empRate, numOfDays, maxHrs));
+
         }
-        Iterator<CompanyEmpWage> itr=al.iterator();
-        while(itr.hasNext())
-        {
-            itr.next().calculateEmployeeWageForCompany();
-        }
+        System.out.println("enter the company ti be queried");
+        String companyName1 = scanner.nextLine();
+        getTotalWageForCompany(companyName1);
+
     }
 }

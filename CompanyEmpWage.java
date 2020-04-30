@@ -32,7 +32,7 @@ public class CompanyEmpWage
         return empHrs;
     }
 
-    public  void calculateEmployeeWageForCompany() {
+    public  String calculateEmployeeWageForCompany() {
         int totalEmpHrs = 0;
         int totalWorkingDays = 0;
         int totalWage = 0;
@@ -43,9 +43,9 @@ public class CompanyEmpWage
             //totalEmpHrs += empHrs;
             int monthlySalary = empRate * empHrs;
             totalWage += monthlySalary;
-            System.out.println("Employee Daily Wage is"+" "+monthlySalary);
+
         }
-        System.out.println("Total Employee wage For Company" + " " + companyName + " " + totalWage);
+        return "Total Employee wage For Company" + " " + companyName + " " + totalWage;
     }
 
 }
