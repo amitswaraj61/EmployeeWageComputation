@@ -43,11 +43,9 @@ public class CompanyEmpWage
             //totalEmpHrs += empHrs;
             int monthlySalary = empRate * empHrs;
             totalWage += monthlySalary;
-           // System.out.println(monthlySalary);
+            System.out.println("Employee Daily Wage is"+" "+monthlySalary);
         }
         System.out.println("Total Employee wage For Company" + " " + companyName + " " + totalWage);
     }
 
 }
-
-//
